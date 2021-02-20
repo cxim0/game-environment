@@ -1,6 +1,6 @@
 #include <vector>
 
-#define BYTE(n,X) n&(
+#define GET_BYTE(num,x) (num&(0xff<<(x*8-1)))>>(x*8-1)
 
 class HugeInt
 {
