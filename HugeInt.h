@@ -1,5 +1,7 @@
 #include <vector>
 
+#define BYTE(n,X) n&(
+
 class HugeInt
 {
 public:
@@ -9,7 +11,10 @@ HugeInt(int a=0){
     this->ii=this->i.begin;
 }
 //禁用拷贝构造
-HugeInt(HugeInt){}
+HugeInt(HugeInt){
+    this->i.push_back(a);
+    this->ii=this->i.begin
+}
 //int赋值
 HugeInt& operator=(int a){
     *(this->ii)=a;
