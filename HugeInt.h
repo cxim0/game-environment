@@ -10,8 +10,15 @@ HugeInt(int a=0){
 }
 //禁用拷贝构造
 HugeInt(HugeInt){}
-
-
+//int赋值
+HugeInt& operator=(int a){
+    *(this->ii)=a;
+    return *this;
+}
+//long long int赋值
+HugeInt& operator=(long long int a){
+    
+}
 
 
 
