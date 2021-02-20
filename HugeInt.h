@@ -10,10 +10,10 @@ HugeInt(int a=0){
     this->i.push_back(a);
     this->ii=this->i.begin();
 }
-//禁用拷贝构造
+//拷贝构造
 HugeInt(HugeInt){
-    this->i.push_back(0);
-    this->ii=this->i.begin();
+    this->i=a->i;
+    this->ii=a->i.begin();
 }
 //int赋值
 HugeInt& operator=(int a){
