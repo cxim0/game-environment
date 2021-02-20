@@ -33,11 +33,12 @@ HugeInt& operator=(long long int A){
     this->ii=this->i.begin();
     return *this;
 }
+//互相赋值
 HugeInt& operator=(HugeInt a){
     this->i=a->i;
     this->ii=a->i.begin();
 }
-
+HugeInt& 
 
 
 private:
