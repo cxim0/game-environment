@@ -4,6 +4,10 @@
 #define II (this->ii)
 #define I (this->i)
 #define INT_MAX 1<<(sizeof(int)*8)
+/*
+这里相关的有个BUG
+回头改吧
+*/
 #define FULLED (II++)==(I.end())
 #define RR II=I.begin()
 
