@@ -38,7 +38,9 @@ HugeInt& operator=(HugeInt a){
     this->i=a->i;
     this->ii=a->i.begin();
 }
-HugeInt& 
+HugeInt& operator+(int a){
+
+}
 
 
 private:
