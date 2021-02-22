@@ -97,7 +97,7 @@ void add_in(vector<int>::iterator ws,int a){
     *ws=0;
     add_in(ws++,cz);
 }
-#end if
+#endif
 
 
 
