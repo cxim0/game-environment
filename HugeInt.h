@@ -4,11 +4,6 @@
 #define II (this->ii)
 #define I (this->i)
 #define INT_MAX 1<<(sizeof(int)*8)
-/*
-这里相关的有个BUG
-回头改吧
-*/
-#define FULLED (II++)==(I.end())
 #define RR II=I.begin()
 
 class HugeInt
@@ -36,7 +31,7 @@ HugeInt& operator=(long long int A){
     int a=GET_BYTE(A,1)|GET_BYTE(A,2)|GET_BYTE(A,3)|GET_BYTE(A,4),b=GET_BYTE(A,5)|GET_BYTE(A,6)|GET_BYTE(A,7)|GET_BYTE(A,8);
     //赋值
     *II=a;
-    if(FULLED){
+    if((II++)==(I.end())){
         I.push_back(b);
     }else{
         *II=b;
@@ -49,22 +44,42 @@ HugeInt& operator=(long long int A){
 HugeInt& operator=(HugeInt a){
     I=a->i;
     this->ii=a->i.begin();
+    return *this;
 }
 
+//普通整数
 HugeInt& operator+(int a){
-    if(not_special(a,*II)){
-        a-=INT_MAX-*II;
-        
-    }else{
-        
-    }
-    //归位
-    RR;
+    add_in(II,a);
+    return *this;
+}
+
+//long long int
+HugeInt& operator+(long long int A){
+    int a=GET_BYTE(A,1)|GET_BYTE(A,2)|GET_BYTE(A,3)|GET_BYTE(A,4),b=GET_BYTE(A,5)|GET_BYTE(A,6)|GET_BYTE(A,7)|GET_BYTE(A,8);                                 
+    add_in(II,a);
+    add_in(II,b);
     return *this;
 }
 
 
 protected:
+
+
+//先写成递归，回头改成循环，防爆栈
+void add_in(vector<int>::iterator ws,int a){
+    if(*ws==I.end()){
+        I.push_back(0);
+    }
+    if(not_special(*ws,a){
+        *ws+=a;
+        return;
+    }
+    int cz=a;
+    cz-=INT_MAX-*ws;
+    *ws=0;
+    add_in(ws++,cz);
+}
+
 bool not_special(int x,int y){
     if(INT_MAX-y<x){
         return false;
