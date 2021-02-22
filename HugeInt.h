@@ -47,19 +47,36 @@ HugeInt& operator=(HugeInt a){
     return *this;
 }
 
-//普通整数
+//普通整数加
 HugeInt& operator+(int a){
     add_in(II,a);
     return *this;
 }
 
-//long long int
+//long long int加
+//warning: only can use in 32 bit
 HugeInt& operator+(long long int A){
     int a=GET_BYTE(A,1)|GET_BYTE(A,2)|GET_BYTE(A,3)|GET_BYTE(A,4),b=GET_BYTE(A,5)|GET_BYTE(A,6)|GET_BYTE(A,7)|GET_BYTE(A,8);                                 
     add_in(II,a);
     add_in(II,b);
     return *this;
 }
+
+//互相加
+HugeInt& operator+(HugeInt a){
+    for(vector<int>::iterator f=a.i.begin();f!=a.i.end();f++,II++){
+        add_in(II,*f);
+    }
+    RR;
+    return *this;
+}
+
+
+
+
+
+
+
 
 
 protected:
