@@ -28,7 +28,8 @@ HugeInt& operator=(int a){
 //warning: only can use in 32bit
 HugeInt& operator=(long long int A){
     //拆分
-    int a=GET_BYTE(A,1)|GET_BYTE(A,2)|GET_BYTE(A,3)|GET_BYTE(A,4),b=GET_BYTE(A,5)|GET_BYTE(A,6)|GET_BYTE(A,7)|GET_BYTE(A,8);
+    int * z=&A;
+    int a=*z,b=*(z++);
     //赋值
     *II=a;
     if((II++)==(I.end())){
@@ -56,7 +57,8 @@ HugeInt& operator+(int a){
 //long long int加
 //warning: only can use in 32 bit
 HugeInt& operator+(long long int A){
-    int a=GET_BYTE(A,1)|GET_BYTE(A,2)|GET_BYTE(A,3)|GET_BYTE(A,4),b=GET_BYTE(A,5)|GET_BYTE(A,6)|GET_BYTE(A,7)|GET_BYTE(A,8);                                 
+    int * z=&A;
+    int a=*z,b=*(z++);                                 
     add_in(II,a);
     add_in(II,b);
     return *this;
