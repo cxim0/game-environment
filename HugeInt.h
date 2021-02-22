@@ -25,7 +25,6 @@ HugeInt& operator=(int a){
     return *this;
 }
 //long long int赋值
-//warning: only can use in 32bit
 HugeInt& operator=(long long int A){
     //拆分
     int * z=&A;
@@ -55,7 +54,6 @@ HugeInt& operator+(int a){
 }
 
 //long long int加
-//warning: only can use in 32 bit
 HugeInt& operator+(long long int A){
     int * z=&A;
     int a=*z,b=*(z++);                                 
@@ -84,6 +82,7 @@ HugeInt& operator+(HugeInt a){
 protected:
 
 
+#if 0
 //先写成递归，回头改成循环，防爆栈
 void add_in(vector<int>::iterator ws,int a){
     if(*ws==I.end()){
@@ -98,6 +97,12 @@ void add_in(vector<int>::iterator ws,int a){
     *ws=0;
     add_in(ws++,cz);
 }
+#end if
+
+
+
+
+
 
 bool not_special(int x,int y){
     if(INT_MAX-y<x){
