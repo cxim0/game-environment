@@ -1,4 +1,6 @@
 #include <vector>
+#include <string>
+#include <stdio.h>
 
 #define II (this->ii)
 #define I (this->i)
@@ -69,10 +71,41 @@ HugeInt& operator+(HugeInt a){
     RR;
     return *this;
 }
-
+//懂的都懂
 HugeInt& operator+=(HugeInt a){
-    
+    return ((*this)=((*this)+a));
 }
+//懂的都懂
+HugeInt& operator+=(int a){
+    return ((*this)=((*this)+a));
+}
+//懂的都懂
+HugeInt& operator+=(long long int a){
+    return ((*this)=((*this)+a));
+}
+//懂的都懂
+HugeInt& operator++(){
+	return ((*this)+=1);
+}
+//懂的都懂
+HugeInt& operator++(int){
+	return ((*this)+=1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,4 +156,11 @@ bool not_special(int x,int y){
 vector<int>i;
 vector<int>::iterator ii;
 };
+
+
+string& operaror+(string a,HugeInt s){
+	
+}
+
+
 
