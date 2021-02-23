@@ -1,9 +1,8 @@
 #include <vector>
 
-#define GET_BYTE(num,x) (num&(0xff<<(x*8-1)))>>(x*8-1)
 #define II (this->ii)
 #define I (this->i)
-#define INT_MAX 1<<(sizeof(int)*8)
+#define INT_MAX (~(1<<(sizeof(int)*8-1)))
 #define RR II=I.begin()
 
 class HugeInt
@@ -71,7 +70,9 @@ HugeInt& operator+(HugeInt a){
     return *this;
 }
 
-
+HugeInt& operator+=(HugeInt a){
+    
+}
 
 
 
@@ -98,11 +99,20 @@ void add_in(vector<int>::iterator ws,int a){
     add_in(ws++,cz);
 }
 #endif
-
-
-
-
-
+//改版
+void add_in(int a){
+	vector<int>::iterator ws=II;
+	do{
+		if(*ws==I.end()){
+			I.push_back(0);
+		}
+		int cz=a;
+		cz-=INT_MAX-*ws;
+		*ws=0;
+		add_in(ws++,cz);
+	}while(!(not_special(*ws,a)))
+	*ws+=a;
+}
 
 bool not_special(int x,int y){
     if(INT_MAX-y<x){
@@ -113,3 +123,4 @@ bool not_special(int x,int y){
 vector<int>i;
 vector<int>::iterator ii;
 };
+
