@@ -84,7 +84,7 @@ HugeInt& operator+=(long long int a){
 }
 //懂的都懂
 HugeInt& operator++(){
-	return ((*this)+=1);
+    return ((*this)+=1);
 }
 //懂的都懂
 HugeInt& operator++(int){
@@ -108,21 +108,9 @@ void add_in(vector<int>::iterator ws,int a){
     *ws=0;
     add_in(ws++,cz);
 }
+
 #endif
-//改版
-void add_in(int a){
-	vector<int>::iterator ws=II;
-	while(!(not_special(*ws,a))){
-		if(*ws==I.end()){
-			I.push_back(0);
-		}
-		int cz=a;
-		cz-=INT_MAX-*ws;
-		*ws=0;
-		add_in(ws++,cz);
-	}
-	*ws+=a;
-}
+
 
 bool not_special(int x,int y){
     if(INT_MAX-y<x){
