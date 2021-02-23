@@ -6,7 +6,9 @@
 #define I (this->i)
 #define INT_MAX (~(1<<(sizeof(int)*8-1)))
 
-
+/*
+我的目标是：取消上限，下限再说
+*/
 class HugeInt
 {
 public:
@@ -15,7 +17,10 @@ HugeInt(int a=0){
     I.push_back(a);
     II=I.begin();
 }
-
+HugeInt(long long int a){
+    //第n版了，实在懒得再写一遍QWQ
+    *this=a;
+}
 //拷贝构造
 HugeInt(HugeInt a){
     I=vector<int>(a->i);
@@ -86,29 +91,7 @@ HugeInt& operator++(int){
 	return ((*this)+=1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 protected:
-
 
 #if 0
 //先写成递归，回头改成循环，防爆栈
@@ -150,11 +133,3 @@ bool not_special(int x,int y){
 vector<int>i;
 vector<int>::iterator ii;
 };
-
-
-string& operaror+(string a,HugeInt s){
-	
-}
-
-
-
