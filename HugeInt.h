@@ -5,7 +5,7 @@
 #define II (this->ii)
 #define I (this->i)
 #define INT_MAX (~(1<<(sizeof(int)*8-1)))
-#define RR II=I.begin()
+
 
 class HugeInt
 {
@@ -15,30 +15,28 @@ HugeInt(int a=0){
     I.push_back(a);
     II=I.begin();
 }
+
 //拷贝构造
-HugeInt(HugeInt){
-    I=a->i;
-    II=a->i.begin();
+HugeInt(HugeInt a){
+    I=vector<int>(a->i);
+    II=I.begin();
 }
 //int赋值
 HugeInt& operator=(int a){
-    *II=a;
+    I=vector<int>();
+    I.push_back(a);
+    II=I.begin;
     return *this;
 }
 //long long int赋值
 HugeInt& operator=(long long int A){
+    I=vector<int>();
     //拆分
     int * z=&A;
     int a=*z,b=*(z++);
     //赋值
-    *II=a;
-    if((II++)==(I.end())){
-        I.push_back(b);
-    }else{
-        *II=b;
-    }
-    //归位
-    RR;
+    I.push_back(a);
+    I.push_back(b);
     return *this;
 }
 //互相赋值
@@ -56,11 +54,7 @@ HugeInt& operator+(int a){
 
 //long long int加
 HugeInt& operator+(long long int A){
-    int * z=&A;
-    int a=*z,b=*(z++);                                 
-    add_in(II,a);
-    add_in(II,b);
-    return *this;
+    return ((*this)+A);
 }
 
 //互相加
@@ -135,7 +129,7 @@ void add_in(vector<int>::iterator ws,int a){
 //改版
 void add_in(int a){
 	vector<int>::iterator ws=II;
-	do{
+	while(!(not_special(*ws,a))){
 		if(*ws==I.end()){
 			I.push_back(0);
 		}
@@ -143,7 +137,7 @@ void add_in(int a){
 		cz-=INT_MAX-*ws;
 		*ws=0;
 		add_in(ws++,cz);
-	}while(!(not_special(*ws,a)))
+	}
 	*ws+=a;
 }
 
