@@ -93,23 +93,33 @@ HugeInt& operator++(int){
 
 protected:
 
-#if 0
+/*
 //先写成递归，回头改成循环，防爆栈
 void add_in(vector<int>::iterator ws,int a){
-    if(*ws==I.end()){
+    //检查是否已满，并处理
+    if(ws==I.end()){
         I.push_back(0);
     }
+    //非特殊情况处理
     if(not_special(*ws,a){
         *ws+=a;
         return;
+    }else{
+        //特殊情况处理
+        a-=INT_MAX-*ws;
+        *ws=a;
+        //add_in(ws++,1);
+	a=1;
+	ws++;
+        if(not_special(*ws,a)){
+	    *ws+=a;
+            return;
+	}else{
+	    ...
+	}
     }
-    int cz=a;
-    cz-=INT_MAX-*ws;
-    *ws=0;
-    add_in(ws++,cz);
 }
-
-#endif
+*/
 
 
 bool not_special(int x,int y){
