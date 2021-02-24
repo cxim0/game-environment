@@ -111,15 +111,36 @@ void add_in(vector<int>::iterator ws,int a){
         //add_in(ws++,1);
 	a=1;
 	ws++;
+	//检查是否已满，并处理
+	if(ws==I.end()){
+	    I.push_back(0);
+	}
+	//非特殊情况处理
         if(not_special(*ws,a)){
 	    *ws+=a;
             return;
 	}else{
+	//特殊情况处理
 	    ...
 	}
     }
 }
 */
+void add_in(vector<int>::iterator ws,int a){
+    while(!not_special(*ws,a){
+        //特殊情况处理
+        a-=INT_MAX-*ws;
+        *ws=a;
+        //add_in(ws++,1);
+	a=1;
+	ws++;
+	//检查是否已满，并处理
+	if(ws==I.end()){
+	    I.push_back(0);
+	}
+    }
+}
+
 
 
 bool not_special(int x,int y){
