@@ -52,18 +52,18 @@ HugeInt& operator=(HugeInt a){
 }
 
 //普通整数加
-HugeInt& operator+(int a){
+HugeInt& operator+=(int a){
     add_in(II,a);
     return *this;
 }
 
 //long long int加
-HugeInt& operator+(long long int A){
+HugeInt& operator+=(long long int A){
     return ((*this)+A);
 }
 
 //互相加
-HugeInt& operator+(HugeInt a){
+HugeInt& operator+=(HugeInt a){
     for(vector<int>::iterator f=a.i.begin();f!=a.i.end();f++,II++){
         add_in(II,*f);
     }
@@ -71,16 +71,16 @@ HugeInt& operator+(HugeInt a){
     return *this;
 }
 //懂的都懂
-HugeInt& operator+=(HugeInt a){
-    return ((*this)=((*this)+a));
+HugeInt& operator+(HugeInt a){
+    return (HugeInt()+=a);
 }
 //懂的都懂
-HugeInt& operator+=(int a){
-    return ((*this)=((*this)+a));
+HugeInt& operator+(int a){
+    return (HugeInt()+=a);
 }
 //懂的都懂
-HugeInt& operator+=(long long int a){
-    return ((*this)=((*this)+a));
+HugeInt& operator+(long long int a){
+    return (HugeInt()+=a);
 }
 //懂的都懂
 HugeInt& operator++(){
