@@ -102,11 +102,17 @@ protected:
 
 void add_in(vector<int>::iterator it,int a){
     if(not_special(*it,a)){
+	//非特殊情况，直接加
         *it+=a;
 	return;
     }else{
+	//特殊情况
+	
+	//检查是否已满，如果已满，处理
         if((++it)==I.end()){
-	    I.push_back(INT_MAX
+	    *it=INT_MAX-a;
+	    I.push_back(1);
+	    return;
 	}
 	
     }
