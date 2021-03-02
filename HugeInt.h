@@ -2,10 +2,17 @@
 #include <string>
 #include <stdio.h>
 
+#ifdef HUGEINT
+//do nothing
+#else
+#define HUGEINT 1
 #define II (this->ii)
 #define I (this->i)
+#ifdef INT_MAX
+//do nothing
+#else
 #define INT_MAX (~(1<<(sizeof(int)*8-1)))
-
+#endif
 /*
 我的目标是：取消上限，下限再说
 */
@@ -72,15 +79,15 @@ HugeInt& operator+=(HugeInt a){
 }
 //懂的都懂
 HugeInt& operator+(HugeInt a){
-    return (HugeInt()+=a);
+    return (HugeInt(*this)+=a);
 }
 //懂的都懂
 HugeInt& operator+(int a){
-    return (HugeInt()+=a);
+    return (HugeInt(*this)+=a);
 }
 //懂的都懂
 HugeInt& operator+(long long int a){
-    return (HugeInt()+=a);
+    return (HugeInt(*this)+=a);
 }
 //懂的都懂
 HugeInt& operator++(){
@@ -93,50 +100,17 @@ HugeInt& operator++(int){
 
 protected:
 
-/*
-//先写成递归，回头改成循环，防爆栈
-void add_in(vector<int>::iterator ws,int a){
-    //检查是否已满，并处理
-    if(ws==I.end()){
-        I.push_back(0);
-    }
-    //非特殊情况处理
-    if(not_special(*ws,a){
-        *ws+=a;
-        return;
+void add_in(vector<int>::iterator it,int a){
+    if(not_special(*it,a)){
+        *it+=a;
+	return;
     }else{
-        //特殊情况处理
-        a-=INT_MAX-*ws;
-        *ws=a;
-        //add_in(ws++,1);
-	a=1;
-	ws++;
-	//检查是否已满，并处理
-	if(ws==I.end()){
-	    I.push_back(0);
+        if((++it)==I.end()){
+	    I.push_back(INT_MAX
 	}
-	//非特殊情况处理
-        if(not_special(*ws,a)){
-	    *ws+=a;
-            return;
-	}else{
-	//特殊情况处理
-	    ...
-	}
+	
     }
 }
-*/
-void add_in(vector<int>::iterator ws,int a){
-    while(){
-		//检查是否已满，并处理
-		if(ws==I.end()){
-            I.push_back(0);
-        }
-		//other
-	}
-}
-
-
 
 bool not_special(int x,int y){
     if(INT_MAX-y<x){
@@ -147,3 +121,4 @@ bool not_special(int x,int y){
 vector<int>i;
 vector<int>::iterator ii;
 };
+#endif
