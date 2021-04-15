@@ -1,1 +1,2 @@
-//重置中
+#program once
+
