@@ -4,6 +4,8 @@
 #include "bit_player.h"
 #include <vector>
 
+usingnamespace std;
+
 class HugeInt{
 public:
     HugeInt(__int64 a=0){
@@ -14,7 +16,7 @@ public:
         v.push_back(*(p++));
     }
     HugeInt(HugeInt a){
-        *this=a;
+        this.v=vector(a.v);
     }
     HugeInt& opertaor=(HugeInt a){
         
@@ -23,6 +25,13 @@ public:
     HugeInt& operator=(__int64 a){
         *this=HugeInt(a);
         return *this;
+    }
+    HugeInt operator+(HugeInt a){
+        __int16 t=0;
+        //...
+    }
+    HugeInt operator+(__int64 a){
+        (*this)+HugeInt(a);
     }
 protected:
     vector<__int16>v;
