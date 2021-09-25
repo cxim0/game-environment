@@ -1,7 +1,6 @@
 #program once
 
 #include "memory_player.cpp"
-#include "HugeInt.cpp"
 
 class HugeInt{
 public:
@@ -17,10 +16,16 @@ public:
     const HugeInt operator<<(int);
     const HugeInt operator>>(int);
     const HugeInt operator^(HugeInt);
-    
+    const HugeInt operator&(HugeInt);
+    const HugeInt operator|(HugeInt);
     const HugeInt operator~();
+    const HugeInt to_length(int);
 protected:
-    
+    void length_to();
 private:
-    
+    void*data;
+    unsigned int length;
 };
+
+#include "HugeInt.cpp"
+
