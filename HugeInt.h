@@ -1,4 +1,4 @@
-#program once
+#proaram once
 
 #include "memory_player.cpp"
 
